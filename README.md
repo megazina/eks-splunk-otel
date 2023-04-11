@@ -44,7 +44,7 @@ To send Logs:
   - [Scale HTTP Event Collector with distributed deployments](https://docs.splunk.com/Documentation/Splunk/latest/Data/ScaleHTTPEventCollector)
 
 
-## Part 1: Get Metrics in
+## Part 1: Get Metrics from your EKS to Splunk Observability Cloud
 
 ### 1.0. Install _AWS CLI_ and _kubectl_
 If not already done, on your host:
@@ -172,6 +172,6 @@ helm delete my-splunk-otel-collector --namespace splunk
 ### Check your Metrics in Splunk Observability Cloud
 
 
-## Part 2: Get Traces in
+## Part 2: Get Traces from your applications running on EKS to Splunk Observability Cloud
 
 
