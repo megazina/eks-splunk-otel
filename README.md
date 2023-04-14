@@ -88,11 +88,13 @@ This Lab is designed to help you get started with Observability of your EKS clus
 ### 1.2 Deploy Splunk OTel collector.
 
   We are going to deploy OTel collector via Helm chart.
-  Collector in this case is running as a Daemonset
-  .....
-  .....
-  .....
-  .....
+  
+>:bulb: Info note: What am I deploying? 
+> [Splunk OpenTelemetry Collector for Kubernetes](https://github.com/signalfx/splunk-otel-collector-chart) has the following components and applications:
+> - Splunk OpenTelemetry Collector Agent (_agent_) to fetch metrics, traces and logs from a Kubernetes cluster (deployed as a Kubernetes _DaemonSet_)
+> - Splunk OpenTelemetry Collector Cluster Receiver (_clusterReceiver_) to fetch metrics from a Kubernetes API (deployed as a Kubernetes 1-replica _Deployment_)
+>> - Optional, not used in this lab Splunk OpenTelemetry Collector Gateway (gateway) to forward data through it to reduce load on Kubernetes API and apply additional processing (deployed as a Kubernetes _Deployment_)
+>
 
 
 #### Add Helm repo
@@ -150,12 +152,9 @@ helm install my-splunk-otel-collector --values <path-to-your-eks-values.yaml> sp
 kubectl get pods -A
 ```
 
-> :bulb: Info note: What pods do I see? (agent, clusterReceiver)
->
-> [Splunk OpenTelemetry Collector for Kubernetes](https://github.com/signalfx/splunk-otel-collector-chart) has the following components and applications:
-> - Splunk OpenTelemetry Collector Agent (_agent_) to fetch metrics, traces and logs from a Kubernetes cluster (deployed as a Kubernetes _DaemonSet_)
-> - Splunk OpenTelemetry Collector Cluster Receiver (_clusterReceiver_) to fetch metrics from a Kubernetes API (deployed as a Kubernetes 1-replica _Deployment_)
->> - Optional, not used in this lab Splunk OpenTelemetry Collector Gateway (gateway) to forward data through it to reduce load on Kubernetes API and apply additional processing (deployed as a Kubernetes _Deployment_)
+> :bulb: Info note: What pods should I see? 
+> 
+> You should see at least two pods (depending on the number of nodes you have on your cluster: agent (1 per node), clusterReceiver (1 per cluster).
 >
 
 
