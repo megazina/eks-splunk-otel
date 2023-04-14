@@ -36,13 +36,6 @@ To send Metrics/Traces:
   - [Splunk Access Token with INGEST scope](https://docs.splunk.com/Observability/admin/authentication-tokens/org-tokens.html#admin-org-tokens)
   - [Splunk Realm](https://dev.splunk.com/observability/docs/realms_in_endpoints/)
 
-To send Logs:
-- Splunk Enterprise 8.0 or later; OR Splunk Cloud
-- A minimum of one Splunk platform index ready to collect the log data. This index will be used for ingesting logs.
-- An HTTP Event Collector (HEC) token and endpoint. See the following topics for more information:
-  - [Set up and use HTTP Event Collector in Splunk Web](https://docs.splunk.com/Documentation/Splunk/latest/Data/UsetheHTTPEventCollector) 
-  - [Scale HTTP Event Collector with distributed deployments](https://docs.splunk.com/Documentation/Splunk/latest/Data/ScaleHTTPEventCollector)
-
 
 ## Part 1: Get Metrics from your EKS to Splunk Observability Cloud
 
@@ -113,21 +106,14 @@ helm repo add splunk-otel-collector-chart https://signalfx.github.io/splunk-otel
 1. Create new or clone a yaml file with the sample values `eks-values.yaml`. 
 2. Update the below parameters.
 
-_Note: We recommend starting from Metrics/Traces first, so in the default file the configuration lines for Splunk Enterprise/Cloud are commented. You will need to uncomment those if you would like to configure Logs to be sent to Splunk Enterprise/Cloud._
-
 The following parameter is required for any of the destinations:
 
-- `clusterName`: identifies your Kubernetes cluster. This value will be associated with every trace, metric and log as "k8s.cluster.name" attribute.
+- `clusterName`: identifies your Kubernetes cluster. This value will be associated with every metric and trace as "k8s.cluster.name" attribute.
 
 To Metrics/Traces to _Splunk Observability Cloud_ the following parameters are required:
 
 - `splunkObservability.realm`: Splunk realm to send telemetry data to (e.g. us1, eu0, au0, etc.).
 - `splunkObservability.accessToken`: Your Splunk Observability org access token with INGEST scope.
-
-For _Splunk Enterprise/Cloud_ the following parameters are required:
-
-- `splunkPlatform.endpoint`: URL to a Splunk instance (e.g. "http://localhost:8088/services/collector")
-- `splunkPlatform.token`: Splunk HTTP Event Collector token
 
 
 #### Deploy helm chart
@@ -163,7 +149,7 @@ kubectl get pods -A
 > :bulb: Info note: What pods do I see? (agent, clusterReceiver)
 >
 > [Splunk OpenTelemetry Collector for Kubernetes](https://github.com/signalfx/splunk-otel-collector-chart) has the following components and applications:
-> - Splunk OpenTelemetry Collector Agent (_agent_) to fetch logs, metrics, and traces from a Kubernetes cluster (deployed as a Kubernetes _DaemonSet_)
+> - Splunk OpenTelemetry Collector Agent (_agent_) to fetch metrics, traces and logs from a Kubernetes cluster (deployed as a Kubernetes _DaemonSet_)
 > - Splunk OpenTelemetry Collector Cluster Receiver (_clusterReceiver_) to fetch metrics from a Kubernetes API (deployed as a Kubernetes 1-replica _Deployment_)
 >> - Optional, not used in this lab Splunk OpenTelemetry Collector Gateway (gateway) to forward data through it to reduce load on Kubernetes API and apply additional processing (deployed as a Kubernetes _Deployment_)
 >
