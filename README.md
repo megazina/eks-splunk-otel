@@ -70,7 +70,7 @@ kubectl get nodes
 
 Successful output should contain the list of nodes you have in the EKS cluster.
 
-> Troubleshooting
+>  :wrench: Troubleshooting
 >
 > If you get an error `‘NoneType’ object is not iterable` - it most likely means that you already have **existing** k8s config.
 >
@@ -160,11 +160,11 @@ Run the below command to get the list of pods in all namespaces (flag `-A`), you
 kubectl get pods -A
 ```
 
-> Info note: What pods do I see? (agent, clusterReceiver)
+> :bulb: Info note: What pods do I see? (agent, clusterReceiver)
 > [Splunk OpenTelemetry Collector for Kubernetes](https://github.com/signalfx/splunk-otel-collector-chart) has the following components and applications:
-> - Splunk OpenTelemetry Collector Agent (agent) to fetch logs, metrics, and traces from a Kubernetes cluster (deployed as a Kubernetes DaemonSet)
-> - Splunk OpenTelemetry Collector Cluster Receiver (clusterReceiver) to fetch metrics from a Kubernetes API (deployed as a Kubernetes 1-replica Deployment)
->> - Optional, not used in this lab Splunk OpenTelemetry Collector Gateway (gateway) to forward data through it to reduce load on Kubernetes API and apply additional processing (deployed as a Kubernetes Deployment)
+> - Splunk OpenTelemetry Collector Agent (_agent_) to fetch logs, metrics, and traces from a Kubernetes cluster (deployed as a Kubernetes _DaemonSet_)
+> - Splunk OpenTelemetry Collector Cluster Receiver (_clusterReceiver_) to fetch metrics from a Kubernetes API (deployed as a Kubernetes 1-replica _Deployment_)
+>> - Optional, not used in this lab Splunk OpenTelemetry Collector Gateway (gateway) to forward data through it to reduce load on Kubernetes API and apply additional processing (deployed as a Kubernetes _Deployment_)
 >
 
 
@@ -186,6 +186,19 @@ helm delete my-splunk-otel-collector --namespace splunk
 ```
 
 ### Check your Metrics in Splunk Observability Cloud
+
+3 easy ways to start working with your Kubernetes metrics:
+
+1. Use Kubernetes navigator
+  Login to Splunk Observability Cloud and navigate to Infrastructure -> Kubernetes.
+  You should be able to see the numbed of Nodes and Workloads.
+  Click on the Nodes and explore the metrics down to the Container/Pod level. Similarly, you can explore Workloads related views.
+  
+
+2. Explore metrics in Metrics Finder
+
+3. Work with Metrics in Dashboards and Charts
+
 
 
 ## Part 2: Get Traces from your applications running on EKS to Splunk Observability Cloud
