@@ -136,15 +136,15 @@ kubectl get namespaces
 
   2. Deploy collector helm chart to your new namespace
 
-    Replace `<path-to-your-eks-values.yaml>` with full path to your yaml file (e.g. `/Users/xxx/eks-values.yaml`) and run the below
+  Replace `<path-to-your-eks-values.yaml>` with full path to your yaml file (e.g. `/Users/xxx/eks-values.yaml`) and run the below
 
 ```bash
 helm install my-splunk-otel-collector --values <path-to-your-eks-values.yaml> splunk-otel-collector-chart/splunk-otel-collector --namespace splunk
 ```
 
-    Check your work
+  Check your work
 
-    Run the below command to get the list of pods in all namespaces (flag `-A`), you can also run kubectl `get pods -n splunk` to get the list of pods deployed as a part of otel collector helm chart.
+  Run the below command to get the list of pods in all namespaces (flag `-A`), you can also run kubectl `get pods -n splunk` to get the list of pods deployed as a part of otel collector helm chart.
 
 ```bash
 kubectl get pods -A
