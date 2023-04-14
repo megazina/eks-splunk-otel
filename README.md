@@ -174,9 +174,9 @@ kubectl get pods -A
   helm delete my-splunk-otel-collector --namespace splunk
   ```
 
-### Check your Metrics in Splunk Observability Cloud
+### 1.3 Check your Metrics in Splunk Observability Cloud
 
-3 easy ways to start working with your Kubernetes metrics:
+  3 easy ways to start working with your Kubernetes metrics:
 
 1. Use Kubernetes navigator
    Login to Splunk Observability Cloud and navigate to _Infrastructure_ -> _Kubernetes_.
