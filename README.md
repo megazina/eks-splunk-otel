@@ -88,9 +88,8 @@ This Lab is designed to help you get started with Observability of your EKS clus
 ### 1.2 Deploy Splunk OTel collector.
 
   We are going to deploy OTel collector via Helm chart.
-  
->:bulb: Info note: What am I deploying? 
-> [Splunk OpenTelemetry Collector for Kubernetes](https://github.com/signalfx/splunk-otel-collector-chart) has the following components and applications:
+
+>:bulb: Info note: [Splunk OpenTelemetry Collector for Kubernetes](https://github.com/signalfx/splunk-otel-collector-chart) has the following components and applications:
 > - Splunk OpenTelemetry Collector Agent (_agent_) to fetch metrics, traces and logs from a Kubernetes cluster (deployed as a Kubernetes _DaemonSet_)
 > - Splunk OpenTelemetry Collector Cluster Receiver (_clusterReceiver_) to fetch metrics from a Kubernetes API (deployed as a Kubernetes 1-replica _Deployment_)
 >> - Optional, not used in this lab Splunk OpenTelemetry Collector Gateway (gateway) to forward data through it to reduce load on Kubernetes API and apply additional processing (deployed as a Kubernetes _Deployment_)
