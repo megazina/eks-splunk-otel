@@ -3,8 +3,9 @@
 
 This Lab is designed to help you get started with Observability of your EKS clusters. Below you will find instructions to:
 - install _OpenTelemetry collector_ on EKS cluster
-- collect _metrics_ from k8s environment & _traces_ from applications running on your nodes and send them to Splunk Observability Cloud
-- collect _logs_ from k8s environment and send them to Splunk Cloud / Enterprise
+- collect _metrics_ from k8s environment and send them to Splunk Observability Cloud
+- collect _traces_ from applications running in your cluster and send them to Splunk Observability Cloud
+
 
 ## Lab Structure
 - Pre-requisites (EKS, Splunk)
@@ -14,7 +15,6 @@ This Lab is designed to help you get started with Observability of your EKS clus
   - 1.3 Check your metrics
 - Part 2: Get Traces from your applications running on EKS to Splunk Observability Cloud
   - 2.1 Deploy a sample JAVA app to your Cluster
-- Part 3: Get Logs in
 - Troubleshooting
 
 
@@ -151,6 +151,22 @@ kubectl get namespaces
 ```bash
 helm install my-splunk-otel-collector --values <path-to-your-eks-values.yaml> splunk-otel-collector-chart/splunk-otel-collector --namespace splunk
 ```
+
+Check your work
+
+Run the below command to get the list of pods in all namespaces (flag `-A`), you can also run kubectl `get pods -n splunk` to get the list of pods deployed as a part of otel collector helm chart.
+
+```bash
+kubectl get pods -A
+```
+
+> Info note: What pods do I see? (agent, clusterReceiver)
+> [Splunk OpenTelemetry Collector for Kubernetes](https://github.com/signalfx/splunk-otel-collector-chart) has the following components and applications:
+> - Splunk OpenTelemetry Collector Agent (agent) to fetch logs, metrics, and traces from a Kubernetes cluster (deployed as a Kubernetes DaemonSet)
+> - Splunk OpenTelemetry Collector Cluster Receiver (clusterReceiver) to fetch metrics from a Kubernetes API (deployed as a Kubernetes 1-replica Deployment)
+>> - Optional, not used in this lab Splunk OpenTelemetry Collector Gateway (gateway) to forward data through it to reduce load on Kubernetes API and apply additional processing (deployed as a Kubernetes Deployment)
+>
+
 
 #### How to upgrade collector config
 
