@@ -191,19 +191,28 @@ helm delete my-splunk-otel-collector --namespace splunk
 3 easy ways to start working with your Kubernetes metrics:
 
 1. Use Kubernetes navigator
-  Login to Splunk Observability Cloud and navigate to _Infrastructure_ -> _Kubernetes_.
+   Login to Splunk Observability Cloud and navigate to _Infrastructure_ -> _Kubernetes_.
 
-  You should be able to see the numbed of _Nodes_ and _Workloads_.
+   You should be able to see the numbed of _Nodes_ and _Workloads_.
 
-  Click on the _Nodes_ and explore the metrics down to the Container/Pod level. Similarly, you can explore _Workloads_ related views.
+   Click on the _Nodes_ and explore the metrics down to the Container/Pod level. Similarly, you can explore _Workloads_ related views.
 
-  ![Splunk Observability Kubernetes Navigator](/screenshots/splunk_kubernetes_navigator_view.png "Splunk Observability Kubernetes Navigator")
+   ![Splunk Observability Kubernetes Navigator](/screenshots/splunk_kubernetes_navigator_view.png "Splunk Observability Kubernetes Navigator")
 
 
 2. Explore metrics in Metrics Finder
+   
+   As an example, navigate to _Metric Finder_ (in the menu on the left) and search for `k8s.container.cpu_limit` to see the list of Properties (dimensions and tags) available for this metric.
+
+   ![Splunk Observability Metric Finder](/screenshots/splunk-metric-finder.png "Splunk Observability Metric Finder")
+   
+   If you want to see what metrics have a specific dimension, try searching for `k8s.cluster.name` to see metrics that contain `k8s.cluster.name` in their name or attributes.
+
 
 3. Work with Metrics in Dashboards and Charts
 
+    Navigate to _Dashboards_ and search for _kubernetes_, explore the out-of-the-box dashboard.
+    ![Splunk Observability Kubernetes Dashboards](/screenshots/splunk-kubernetes-ootb-dashboards.png "Splunk Observability Kubernetes Dashboards")
 
 
 ## Part 2: Get Traces from your applications running on EKS to Splunk Observability Cloud
