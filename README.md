@@ -124,31 +124,31 @@ This Lab is designed to help you get started with Observability of your EKS clus
 
   1. Create a namespace (it is easier to manage k8s resources when they are logically separated into workspaces, you will just need to remember to add flag -n or -namespace to your helm and kubectl commands)
 
-    ```bash
-    kubectl create namespace splunk
-    ```
+```bash
+kubectl create namespace splunk
+```
 
-    Check your work
+  Check your work
 
-    ```bash
-    kubectl get namespaces
-    ```
+```bash
+kubectl get namespaces
+```
 
   2. Deploy collector helm chart to your new namespace
 
     Replace `<path-to-your-eks-values.yaml>` with full path to your yaml file (e.g. `/Users/xxx/eks-values.yaml`) and run the below
 
-    ```bash
-    helm install my-splunk-otel-collector --values <path-to-your-eks-values.yaml> splunk-otel-collector-chart/splunk-otel-collector --namespace splunk
-    ```
+```bash
+helm install my-splunk-otel-collector --values <path-to-your-eks-values.yaml> splunk-otel-collector-chart/splunk-otel-collector --namespace splunk
+```
 
     Check your work
 
     Run the below command to get the list of pods in all namespaces (flag `-A`), you can also run kubectl `get pods -n splunk` to get the list of pods deployed as a part of otel collector helm chart.
 
-    ```bash
-    kubectl get pods -A
-    ```
+```bash
+kubectl get pods -A
+```
 
 > :bulb: Info note: What pods do I see? (agent, clusterReceiver)
 >
