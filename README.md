@@ -212,6 +212,7 @@ helm delete my-splunk-otel-collector --namespace splunk
 3. Work with Metrics in Dashboards and Charts
 
     Navigate to _Dashboards_ and search for _kubernetes_, explore the out-of-the-box dashboard.
+    
     ![Splunk Observability Kubernetes Dashboards](/screenshots/splunk-kubernetes-ootb-dashboards.png "Splunk Observability Kubernetes Dashboards")
 
 

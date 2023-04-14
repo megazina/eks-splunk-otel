@@ -1,0 +1,16 @@
+# Splunk Observability required parameters - to send Metrics/Traces
+# Replace below values
+
+clusterName: ClusterName
+splunkObservability:
+  realm: us1
+  accessToken: ORG_TOKEN_VALUE # This should be an Org Token with Ingest scope
+
+distribution: eks
+cloudProvider: aws
+
+# Splunk Platform required parameters - to send Logs 
+# clusterName: CHANGEME
+# splunkPlatform:
+#   token: CHANGEME
+#   endpoint: http://localhost:8088/services/collector
