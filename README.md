@@ -161,6 +161,7 @@ kubectl get pods -A
 ```
 
 > :bulb: Info note: What pods do I see? (agent, clusterReceiver)
+>
 > [Splunk OpenTelemetry Collector for Kubernetes](https://github.com/signalfx/splunk-otel-collector-chart) has the following components and applications:
 > - Splunk OpenTelemetry Collector Agent (_agent_) to fetch logs, metrics, and traces from a Kubernetes cluster (deployed as a Kubernetes _DaemonSet_)
 > - Splunk OpenTelemetry Collector Cluster Receiver (_clusterReceiver_) to fetch metrics from a Kubernetes API (deployed as a Kubernetes 1-replica _Deployment_)
@@ -190,10 +191,14 @@ helm delete my-splunk-otel-collector --namespace splunk
 3 easy ways to start working with your Kubernetes metrics:
 
 1. Use Kubernetes navigator
-  Login to Splunk Observability Cloud and navigate to Infrastructure -> Kubernetes.
-  You should be able to see the numbed of Nodes and Workloads.
-  Click on the Nodes and explore the metrics down to the Container/Pod level. Similarly, you can explore Workloads related views.
-  
+  Login to Splunk Observability Cloud and navigate to _Infrastructure_ -> _Kubernetes_.
+
+  You should be able to see the numbed of _Nodes_ and _Workloads_.
+
+  Click on the _Nodes_ and explore the metrics down to the Container/Pod level. Similarly, you can explore _Workloads_ related views.
+
+  ![Splunk Observability Kubernetes Navigator](/screenshots/splunk_kubernetes_navigator_view.png "Splunk Observability Kubernetes Navigator")
+
 
 2. Explore metrics in Metrics Finder
 
